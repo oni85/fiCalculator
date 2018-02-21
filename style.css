@@ -20,40 +20,97 @@ table {
 td {
   height: 35px;
   width: 35px;
-  border: solid 0.5px #FFE0B2;
+  border: solid 1px #FFFFFF;
   text-align: center;
   font-size: 60%;
   color: #FFFFFF;
 }
 tr {
-  border: solid 0.5px #FFE0B2;
+  border: solid 1px #FFFFFF;
   color: #FFFFFF;
 }
 h1 {
   font-size: 300%;
   font-weight: 100;
   letter-spacing: 1px;
-  margin-left: 185px;
+  margin-left: 285px;
+}
+h2 {
+  font-size: 200%;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+.input {
+  width: 150px;
+  height: 50px;
+  border: solid 1px #FFFFFF;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: #FF9800;
+  outline: none;
 }
 .general {
-  width: 800px;
+  width: 1000px;
   height: 800px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
   background-color: #FF9800;
 }
 .header {
-  width: 800px;
+  width: 1000px;
   height: 85px;
 }
-.tableMain {
+.tableFi {
+  width: 420px;
+  height: 770px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
+
 }
 .tableRy {
-  position: relative;
-  float: left;
+  width: 420px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.tableMain {
+.tableLambda {
+  position: absolute;
+  top: 140px;
+  left: 235px;
+  width: 35px;
+  height: 770px;
+}
+.controls {
+  width: 200px;
+  height: 500px;
+  position: absolute;
+  top: 140px;
+
+}
+.calculateButton {
   position: relative;
-  float: left;
+  height: 100px;
+  width: 150px;
+  margin-top: 200px;
+  background-color: #7C4DFF;
+  border-radius: 5%;
+  transition: 0.2s;
+}
+.shadow {
+  box-shadow: 0 3px 10px rgba(0,0,0,.2), 0 3px 10px rgba(0,0,0,.2);
+}
+.calculateButton:hover {
+  transform: scale(1.1);
+}
+.calculateButton:active {
+  transform: translateY(4px);
+}
+.buttonText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
