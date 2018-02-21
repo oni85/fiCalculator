@@ -44,6 +44,16 @@ h1 {
 }
 .header {
   width: 800px;
-  height: 100px;
-
+  height: 85px;
+}
+.tableMain {
+  margin-top: 20px;
+}
+.tableRy {
+  position: relative;
+  float: left;
+}
+.tableMain {
+  position: relative;
+  float: left;
 }
