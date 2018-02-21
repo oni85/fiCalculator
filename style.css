@@ -132,7 +132,6 @@ h2 {
 .resetButton:active {
   transform: translateY(4px);
 }
-
 .buttonText {
   position: absolute;
   top: 50%;
