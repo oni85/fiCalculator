@@ -40,20 +40,30 @@ h2 {
   font-weight: 100;
   letter-spacing: 1px;
 }
+.footerText {
+  padding-top: 10px;
+  font-size: 60%;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
 .input {
   width: 150px;
-  height: 50px;
+  height: 60px;
   margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border: solid 1px #FFFFFF;
   border-left: none;
   border-right: none;
   border-top: none;
   background-color: #FF9800;
   outline: none;
+  font-size: 200%;
+  font-weight: 100;
 }
 .general {
   width: 1000px;
-  height: 800px;
+  height: 1100px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -62,6 +72,11 @@ h2 {
 .header {
   width: 1000px;
   height: 85px;
+}
+.footer {
+  padding-top: 20px;
+  width: 1000px;
+  height: 80px;
 }
 .tableFi {
   width: 420px;
@@ -103,7 +118,7 @@ h2 {
   position: relative;
   height: 100px;
   width: 150px;
-  margin-top: 190px;
+  margin-top: 170px;
   background-color: #7C4DFF;
   border-radius: 5%;
   transition: 0.2s;
