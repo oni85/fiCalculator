@@ -415,24 +415,21 @@
         </div>
         <div class="controls">
           <h2>Ry, mPa</h2>
-          <input type="text" class="input">
+          <input type="text" class="input" id="rY" onkeyup = "return inputValidation(this);">
           <h2>&#955;</h2>
-          <input type="text" class="input">
+          <input type="text" class="input" id="lambda">
           <h2>fI</h2>
-          <div class="fi">
-
+          <div class="fi" id="fI">
           </div>
-          <div class="calculateButton shadow" id="calcBtn">
-            <p class="buttonText">Calculate</p>
-          </div>
-          <div class="resetButton shadow" id="calcBtn">
-            <p class="buttonText">Reset</p>
-          </div>
+          <button type="button" name="button" class="calculateButton shadow">Calculate fI</button>
+          <button type="button" name="button" class="resetButton shadow">Reset</button>
         </div>
         <div class="footer">
           <p class="footerText">All fI coefficients multiplied by 1000 in the table</p>
           <p class="footerText">Written by oni85</p>
         </div>
-    </div>
+
+      </div>
+  <script src="fiCalculator.js"></script>
   </body>
 </html>

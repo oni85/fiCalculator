@@ -122,6 +122,8 @@ h2 {
   background-color: #7C4DFF;
   border-radius: 5%;
   transition: 0.2s;
+  outline: 0;
+  border: none;
 }
 .resetButton {
   position: relative;
@@ -131,6 +133,8 @@ h2 {
   background-color: #7C4DFF;
   border-radius: 5%;
   transition: 0.2s;
+  outline: 0;
+  border: none;
 }
 .shadow {
   box-shadow: 0 3px 10px rgba(0,0,0,.2), 0 3px 10px rgba(0,0,0,.2);
