@@ -415,9 +415,9 @@
         </div>
         <div class="controls">
           <h2>Ry, mPa</h2>
-          <input type="text" class="input" id="rY" onkeyup = "return inputValidation(this);">
+          <input type="text" class="input" id="rY" maxlength="3" autofocus min="200" max="640" onKeyPress="cislo()">
           <h2>&#955;</h2>
-          <input type="text" class="input" id="lambda">
+          <input type="text" class="input" id="lambda" maxlength="3" onKeyPress="cislo()">
           <h2>fI</h2>
           <div class="fi" id="fI">
           </div>
@@ -428,6 +428,7 @@
           <p class="footerText">All fI coefficients multiplied by 1000 in the table</p>
           <p class="footerText">Written by oni85</p>
         </div>
+        <!-- -------VALIDATION--------- -->
 
       </div>
   <script src="fiCalculator.js"></script>

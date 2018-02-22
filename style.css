@@ -104,6 +104,15 @@ h2 {
   position: absolute;
   top: 140px;
 }
+.validMessage {
+  width: 120px;
+  height: 80px;
+  position: absolute;
+  top: 300px;
+  border: solid 1px #FFFFFF;
+  border-radius: 5%;
+  background-color: rgba(33,33,33,0.8);
+}
 .fi {
   width: 150px;
   height: 50px;
