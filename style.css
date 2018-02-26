@@ -40,6 +40,9 @@ h2 {
   font-weight: 100;
   letter-spacing: 1px;
 }
+p {
+  font-size: 60%;
+}
 .footerText {
   padding-top: 10px;
   font-size: 60%;
@@ -104,15 +107,14 @@ h2 {
   position: absolute;
   top: 140px;
 }
-.validMessage {
-  width: 120px;
-  height: 80px;
+
+.centered {
   position: absolute;
-  top: 300px;
-  border: solid 1px #FFFFFF;
-  border-radius: 5%;
-  background-color: rgba(33,33,33,0.8);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 .fi {
   width: 150px;
   height: 50px;
@@ -145,7 +147,16 @@ h2 {
   outline: 0;
   border: none;
 }
-.shadow {
+.shadow {.validMessage {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  border: solid 2px #FFFFFF;
+  border-radius: 5%;
+  background-color: rgba(244,67,54,0.9);
+  display: block;
+  text-align: center;
+}
   box-shadow: 0 3px 10px rgba(0,0,0,.2), 0 3px 10px rgba(0,0,0,.2);
 }
 .calculateButton:hover {
@@ -166,9 +177,33 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+/*--------------PLACEHOLDERS--------------*/
 #rY::-webkit-input-placeholder {
 font-size: 50%;
 }
 #lambda::-webkit-input-placeholder {
 font-size: 50%;
+}
+/*--------------VALIDATION--------------*/
+.validMessage {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  border: solid 2px #FFFFFF;
+  border-radius: 5%;
+  background-color: rgba(244,67,54,0.8);
+  display: block;
+  text-align: center;
+}
+.displayNone {
+  display: none;
+}
+.displayBlock {
+  display: block;
+}
+.positionRy {
+  top: 145px;
+}
+.positionLambda {
+  top: 270px;
 }
