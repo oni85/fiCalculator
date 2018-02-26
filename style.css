@@ -166,3 +166,9 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+#rY::-webkit-input-placeholder {
+font-size: 50%;
+}
+#lambda::-webkit-input-placeholder {
+font-size: 50%;
+}
