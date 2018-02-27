@@ -43,6 +43,9 @@ h2 {
 p {
   font-size: 60%;
 }
+.transitionDiv {
+  transition: opacity 1s;
+}
 .footerText {
   padding-top: 10px;
   font-size: 60%;
@@ -107,14 +110,12 @@ p {
   position: absolute;
   top: 140px;
 }
-
 .centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .fi {
   width: 150px;
   height: 50px;
@@ -196,10 +197,10 @@ font-size: 50%;
   text-align: center;
 }
 .displayNone {
-  display: none;
+  opacity: 0;
 }
 .displayBlock {
-  display: block;
+  opacity: 1;
 }
 .positionRy {
   top: 145px;
