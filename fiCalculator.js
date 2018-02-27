@@ -1,28 +1,14 @@
-// ------------INPUT VALIDATION-------------//
-/* function inputValidation(input) {
-  let value  = input.value;
-  let rep = /[-\.;":'/a-zA-Zа-яА-Я ]/;
-  if (rep.test(value)) {
-    value = value.replace(rep, '');
-    input.value = value;
-  }
-}
-function cislo(){
-    if (event.keyCode < 48 || event.keyCode > 57)
-    event.returnValue= false;
-}
-let a = [document.querySelector('.tableRy').textContent];
-console.log(a);
-*/
-// ----------CLICK ON CALCULATE BUTTON-----------------------//
 
 document.getElementById('calcBtn').addEventListener('click', function calculate() {
-  // ----------CREATING VARIABLES FROM INPUT DATA-----------------------//
+  // ----------CREATING VARIABLES FROM INPUT DATA----------------------- //
   let rY = document.getElementById('rY').value;
   let lambda = document.getElementById('lambda').value;
   let ryArr = [];
   let lambdaArr = [];
   let fiArr = [];
+  let ryIndex = [];
+  let lambdaIndex = [];
+  let fiIndex = [];
 
   // console.log(document.getElementById('tableRy').children[0].children[0]);
   for (var i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
@@ -78,14 +64,50 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
     document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
   }
-  let a;
-  let b;
+// ----------RYINDEX ARRAY FORMING----------------------- //
+  for (var i = 0; i < ryArr.length; i++) {
+      if (rY === ryArr[i]) {
 
-  while (var i = 0; i < ryArr.length; i++) {
-    if (rY < ryArr[i]) {
-      a = ryArr[i];
-    } else a = 'none';
+        let c = ryArr.indexOf(ryArr[i]);
+        ryIndex.push(c);
+        document.getElementById('tableRy').children[0].children[0].children[i].classList.add('tdActive');
+        console.log(ryIndex);
+        break;
+      } else if (rY < ryArr[i]) {
+        let a = ryArr.indexOf(ryArr[i - 1]);
+        let b = ryArr.indexOf(ryArr[i]);
+        ryIndex.push(a, b);
+        console.log(ryIndex);
+        document.getElementById('tableRy').children[0].children[0].children[i - 1].classList.add('tdActive');
+        document.getElementById('tableRy').children[0].children[0].children[i].classList.add('tdActive');
+        break;
+      } else if (rY > ryArr[i]) {
+
+      }
+    }
+// ----------LAMBDAINDEX ARRAY FORMING----------------------- //
+for (var i = 0; i < lambdaArr.length; i++) {
+    if (lambda === lambdaArr[i]) {
+
+      let f = lambdaArr.indexOf(lambdaArr[i]);
+      lambdaIndex.push(f);
+      document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
+      console.log(lambdaIndex);
+      break;
+    } else if (lambda < lambdaArr[i]) {
+      let d = lambdaArr.indexOf(lambdaArr[i - 1]);
+      let e = lambdaArr.indexOf(lambdaArr[i]);
+      lambdaIndex.push(d, e);
+      console.log(lambdaIndex);
+      document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
+      document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
+      break;
+    } else if (lambda > lambdaArr[i]) {
+
+    }
   }
-  console.log(a);
+// ----------FIINDEX ARRAY FORMING----------------------- //
+fiIndex.push(ryIndex, lambdaIndex);
+console.log(fiIndex);
 }
 )
