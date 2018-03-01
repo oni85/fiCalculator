@@ -1,35 +1,47 @@
-  // ----------PROGRAMM INIT FUNCTION ----------------------- //
+// ----------PROGRAMM INIT FUNCTION ----------------------- //
 function programmInit () {
-  document.getElementById('tableRy').children[0].children[0].children[0].classList.remove('tdActive')
-  document.querySelector('.td').classList.remove('tdActive');
+  let i = 0;
+  // ----------CLEANING TABLES FROM MARKS ----------------------- //
+  for (i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
+    document.getElementById('tableRy').children[0].children[0].children[i].classList.remove('tdActive');
+  }
+  for (i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
+    document.getElementById('tableLambda').children[0].children[i].children[0].classList.remove('tdActive');
+  }
+  for (i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
+        for (var y = 0; y < document.getElementById('tableFi').children[0].children[i].children.length; y++) {
+        document.getElementById('tableFi').children[0].children[i].children[y].classList.remove('tdActive');
+      }
+  }
+  // ----------CLEANING VALIDATION MESSAGES ----------------------- //
   document.getElementById('lambdaValidation').classList.remove('displayBlock');
   document.getElementById('ryValidation').classList.remove('displayBlock');
 }
   // ----------CLICK ON CALCULATE BUTTON ----------------------- //
+
 document.getElementById('calcBtn').addEventListener('click', function calculate() {
+
   programmInit();
+
   // ----------CREATING VARIABLES FROM INPUT DATA ----------------------- //
+
   let rY = parseInt(document.getElementById('rY').value);
   let lambdaC = parseInt(document.getElementById('lambda').value);
-  //console.log(typeof lambdaC);
   let ryArr = [];
   let lambdaArr = [];
   let fiArr = [];
   let ryIndex = [];
   let lambdaIndex = [];
   let fiIndex = [];
-  // console.log(document.getElementById('tableRy').children[0].children[0]);
+
   for (var i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
     ryArr[i] = document.getElementById('tableRy').children[0].children[0].children[i].textContent;
   }
-  //console.log(ryArr);
-  // console.log(document.getElementById('tableLambda').children[0].children[0]);
+
   for (i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
     lambdaArr[i] = document.getElementById('tableLambda').children[0].children[i].children[0].textContent;
   }
-  //console.log(lambdaArr);
-  //console.log(lambdaArr.length);
-  // console.log(document.getElementById('tableFi').children[0].children[0].children[0].textContent);
+
   for (i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
         let fiArrContent = [];
         for (var y = 0; y < document.getElementById('tableFi').children[0].children[i].children.length; y++) {
@@ -38,7 +50,7 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
       }
       fiArr[i] = fiArrContent;
   }
-//console.log(fiArr);
+
   // ----------INPUT VALIDATION----------------------- //
   if (isNaN (rY)) {
     document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
@@ -96,23 +108,6 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
         //console.log(i);
       }
     }
-<<<<<<< HEAD
-// ----------LAMBDAINDEX ARRAY FORMING----------------------- //
-for (var i = 0; i < lambdaArr.length; i++) {
-    if (lambda === lambdaArr[i]) {
-      let f = lambdaArr.indexOf(lambdaArr[i]);
-      lambdaIndex.push(f);
-      document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
-      console.log(lambdaIndex);
-      break;
-    } else if (lambda < lambdaArr[i]) {
-      let d = lambdaArr.indexOf(lambdaArr[i - 1]);
-      let e = lambdaArr.indexOf(lambdaArr[i]);
-      lambdaIndex.push(d, e);
-      console.log(lambdaIndex);
-      document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
-      document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
-=======
     //console.log(i);
   // ----------LAMBDAINDEX ARRAY FORMING----------------------- //
   for (let i = 0; i < lambdaArr.length; i++) {
@@ -126,14 +121,15 @@ for (var i = 0; i < lambdaArr.length; i++) {
         // LAMBDATABLE CELLS HIGHLIGHTING
         document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
         document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
->>>>>>> 2d31527e31ed1afc464f7c61de62efa84f3a7188
       break;
     } else if (lambdaC > +lambdaArr[i]) {
 
     }
   }
   // ----------FIINDEX ARRAY FORMING----------------------- //
+
   fiIndex.push(ryIndex, lambdaIndex);
+
   // ----------FITABLE CELLS HIGHLIGHTING----------------------- //
   if (fiIndex[0].length === 2 && fiIndex[1].length === 2) {
     document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
@@ -149,6 +145,11 @@ for (var i = 0; i < lambdaArr.length; i++) {
   } else {
     document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
   }
-
+  // ----------INTERPOLATION FUNCTION----------------------- //
+  function interpolator(x, x1, x2, y1, y2) {
+    intRes = y1 + (x - x1) * ((y2 - y1) / (x2 - x1));
+    return intRes;
+  }
+  console.log(interpolator(15, 10, 30, 50, 70));
 }
 )
