@@ -1,28 +1,36 @@
-
+  // ----------PROGRAMM INIT FUNCTION ----------------------- //
+function programmInit () {
+  document.getElementById('tableRy').children[0].children[0].children[0].classList.remove('tdActive')
+  document.querySelector('.td').classList.remove('tdActive');
+  document.getElementById('lambdaValidation').classList.remove('displayBlock');
+  document.getElementById('ryValidation').classList.remove('displayBlock');
+}
+  // ----------CLICK ON CALCULATE BUTTON ----------------------- //
 document.getElementById('calcBtn').addEventListener('click', function calculate() {
-  // ----------CREATING VARIABLES FROM INPUT DATA----------------------- //
-  let rY = document.getElementById('rY').value;
-  let lambda = document.getElementById('lambda').value;
+  programmInit();
+  // ----------CREATING VARIABLES FROM INPUT DATA ----------------------- //
+  let rY = parseInt(document.getElementById('rY').value);
+  let lambdaC = parseInt(document.getElementById('lambda').value);
+  //console.log(typeof lambdaC);
   let ryArr = [];
   let lambdaArr = [];
   let fiArr = [];
   let ryIndex = [];
   let lambdaIndex = [];
   let fiIndex = [];
-
   // console.log(document.getElementById('tableRy').children[0].children[0]);
   for (var i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
     ryArr[i] = document.getElementById('tableRy').children[0].children[0].children[i].textContent;
   }
-  console.log(ryArr);
-
+  //console.log(ryArr);
   // console.log(document.getElementById('tableLambda').children[0].children[0]);
-  for (var i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
+  for (i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
     lambdaArr[i] = document.getElementById('tableLambda').children[0].children[i].children[0].textContent;
   }
-  console.log(lambdaArr);
+  //console.log(lambdaArr);
+  //console.log(lambdaArr.length);
   // console.log(document.getElementById('tableFi').children[0].children[0].children[0].textContent);
-  for (var i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
+  for (i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
         let fiArrContent = [];
         for (var y = 0; y < document.getElementById('tableFi').children[0].children[i].children.length; y++) {
         fiArrContent[y] = document.getElementById('tableFi').children[0].children[i].children[y].textContent;
@@ -31,12 +39,12 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
       fiArr[i] = fiArrContent;
   }
 //console.log(fiArr);
-// ----------INPUT VALIDATION----------------------- //
+  // ----------INPUT VALIDATION----------------------- //
   if (isNaN (rY)) {
     document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('ryValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
   }
-  if (isNaN (lambda)) {
+  if (isNaN (lambdaC)) {
     document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
   }
@@ -52,39 +60,43 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
     document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('ryValidation').innerHTML = '<p class="centered">Fill this field</p>';
   }
-  if (lambda < 10) {
+  if (lambdaC < 10) {
     document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is less than 10</p>';
   }
-  if (lambda > 220) {
+  if (lambdaC > 220) {
     document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is more than 220</p>';
   }
-  if (lambda === '') {
+  if (lambdaC === '') {
     document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
     document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
   }
-// ----------RYINDEX ARRAY FORMING----------------------- //
-  for (var i = 0; i < ryArr.length; i++) {
-      if (rY === ryArr[i]) {
-
+  // ----------RYINDEX ARRAY FORMING----------------------- //
+  for (let i = 0; i < ryArr.length; i++) {
+      if (rY === +ryArr[i]) {
         let c = ryArr.indexOf(ryArr[i]);
         ryIndex.push(c);
+        // RYTABLE CELLS HIGHLIGHTING
         document.getElementById('tableRy').children[0].children[0].children[i].classList.add('tdActive');
-        console.log(ryIndex);
+        //console.log(ryIndex);
+        //console.log(i);
         break;
-      } else if (rY < ryArr[i]) {
+      } else if (rY < +ryArr[i]) {
         let a = ryArr.indexOf(ryArr[i - 1]);
         let b = ryArr.indexOf(ryArr[i]);
         ryIndex.push(a, b);
-        console.log(ryIndex);
+        //console.log(ryIndex);
+        // RYTABLE CELLS HIGHLIGHTING
         document.getElementById('tableRy').children[0].children[0].children[i - 1].classList.add('tdActive');
         document.getElementById('tableRy').children[0].children[0].children[i].classList.add('tdActive');
+        //console.log(i);
         break;
-      } else if (rY > ryArr[i]) {
-
+      } else if (rY > +ryArr[i]) {
+        //console.log(i);
       }
     }
+<<<<<<< HEAD
 // ----------LAMBDAINDEX ARRAY FORMING----------------------- //
 for (var i = 0; i < lambdaArr.length; i++) {
     if (lambda === lambdaArr[i]) {
@@ -100,13 +112,43 @@ for (var i = 0; i < lambdaArr.length; i++) {
       console.log(lambdaIndex);
       document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
       document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
+=======
+    //console.log(i);
+  // ----------LAMBDAINDEX ARRAY FORMING----------------------- //
+  for (let i = 0; i < lambdaArr.length; i++) {
+    if (lambdaC === +lambdaArr[i]) {
+        lambdaIndex.push(lambdaArr.indexOf(lambdaArr[i]));
+        // LAMBDATABLE CELLS HIGHLIGHTING
+        document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
+        break;
+    } else if (lambdaC < +lambdaArr[i]) {
+        lambdaIndex.push((lambdaArr.indexOf(lambdaArr[i - 1])), (lambdaArr.indexOf(lambdaArr[i])));
+        // LAMBDATABLE CELLS HIGHLIGHTING
+        document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
+        document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
+>>>>>>> 2d31527e31ed1afc464f7c61de62efa84f3a7188
       break;
-    } else if (lambda > lambdaArr[i]) {
+    } else if (lambdaC > +lambdaArr[i]) {
 
     }
   }
-// ----------FIINDEX ARRAY FORMING----------------------- //
-fiIndex.push(ryIndex, lambdaIndex);
-console.log(fiIndex);
+  // ----------FIINDEX ARRAY FORMING----------------------- //
+  fiIndex.push(ryIndex, lambdaIndex);
+  // ----------FITABLE CELLS HIGHLIGHTING----------------------- //
+  if (fiIndex[0].length === 2 && fiIndex[1].length === 2) {
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].classList.add('tdActive');
+    document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].classList.add('tdActive');
+    document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].classList.add('tdActive');
+  } else if (fiIndex[0].length === 2 && fiIndex[1].length === 1) {
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].classList.add('tdActive');
+  } else if (fiIndex[0].length === 1 && fiIndex[1].length === 2) {
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
+    document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].classList.add('tdActive');
+  } else {
+    document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
+  }
+
 }
 )
