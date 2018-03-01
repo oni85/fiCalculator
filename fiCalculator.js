@@ -88,7 +88,6 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
 // ----------LAMBDAINDEX ARRAY FORMING----------------------- //
 for (var i = 0; i < lambdaArr.length; i++) {
     if (lambda === lambdaArr[i]) {
-
       let f = lambdaArr.indexOf(lambdaArr[i]);
       lambdaIndex.push(f);
       document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
