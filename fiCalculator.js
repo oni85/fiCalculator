@@ -18,10 +18,6 @@ function programmInit () {
   }
 // ----------INTERPOLATION FUNCTION----------------------- //
 
-  function interpolator(x, x1, x2, y1, y2) {
-    intRes = y1 + (x - x1) * ((y2 - y1) / (x2 - x1));
-    return intRes;
-  }
 // ----------CLEANING VALIDATION MESSAGES ----------------------- //
 
   document.getElementById('lambdaValidation').classList.remove('displayBlock');
@@ -32,6 +28,11 @@ function programmInit () {
 document.getElementById('calcBtn').addEventListener('click', function calculate() {
 
   programmInit();
+
+  function interpolator(x, x1, x2, y1, y2) {
+    intRes = Math.round(y1 + (x - x1) * (y2 - y1) / (x2 - x1));
+    return intRes;
+  }
 
 // ----------CREATING VARIABLES FROM INPUT DATA ----------------------- //
 
@@ -47,6 +48,9 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
   let y2;
   let y3;
   let y4;
+  let fi1;
+  let fi2;
+  let fi;
 
   for (var i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
     ryArr[i] = document.getElementById('tableRy').children[0].children[0].children[i].textContent;
@@ -110,8 +114,8 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
       } else if (rY < +ryArr[i]) {
         let a = ryArr.indexOf(ryArr[i - 1]);
         let b = ryArr.indexOf(ryArr[i]);
-        y1 = ryArr[i - 1];
-        y2 = ryArr[i];
+        x1 = parseInt(ryArr[i - 1]);
+        x2 = parseInt(ryArr[i]);
         ryIndex.push(a, b);
         //console.log(ryIndex);
         // RYTABLE CELLS HIGHLIGHTING
@@ -133,8 +137,8 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
         break;
     } else if (lambdaC < +lambdaArr[i]) {
         lambdaIndex.push((lambdaArr.indexOf(lambdaArr[i - 1])), (lambdaArr.indexOf(lambdaArr[i])));
-        y3 = lambdaArr[i - 1];
-        y4 = lambdaArr[i];
+        x3 = parseInt(lambdaArr[i - 1]);
+        x4 = parseInt(lambdaArr[i]);
         // LAMBDATABLE CELLS HIGHLIGHTING
         document.getElementById('tableLambda').children[0].children[i - 1].children[0].classList.add('tdActive');
         document.getElementById('tableLambda').children[0].children[i].children[0].classList.add('tdActive');
@@ -155,18 +159,28 @@ document.getElementById('calcBtn').addEventListener('click', function calculate(
     document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].classList.add('tdActive');
     document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].classList.add('tdActive');
     // fi calculate
-    let x1 = document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].textContent;
+    let y1 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].textContent);
     console.log('x1 = ' + x1);
-    let x2 = document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].textContent;
+    let y2 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].textContent);
     console.log('x2 = ' + x2);
-    let x3 = document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].textContent;
+    let y3 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].textContent);
     console.log('x3 = ' + x3);
-    let x4 = document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].textContent;
+    let y4 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].textContent);
     console.log('x4 = ' + x4);
     console.log('y1 = ' + y1);
     console.log('y2 = ' + y2);
     console.log('y3 = ' + y3);
     console.log('y4 = ' + y4);
+    fi1 = interpolator(rY, x1, x2, y1, y2);
+    console.log(fi1);
+    console.log(typeof fi1);
+    fi2 = interpolator(rY, x1, x2, y3, y4);
+    console.log(fi2);
+    console.log(typeof fi2);
+    fi = interpolator(lambdaC, x3, x4, fi1, fi2);
+    console.log(fi);
+    console.log(typeof fi);
+    document.getElementById('fI').textContent = (fi / 1000);
 
   } else if (fiIndex[0].length === 2 && fiIndex[1].length === 1) {
     document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
