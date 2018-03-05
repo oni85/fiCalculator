@@ -129,6 +129,8 @@ p {
   border-top: none;
   background-color: #FF9800;
   outline: none;
+  font-size: 200%;
+  font-weight: 100;
 }
 .calculateButton {
   position: relative;
