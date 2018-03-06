@@ -29,6 +29,20 @@ td {
   background-color: rgba(244,67,54,0.8);
   transition: background 1s;
 }
+.labelRy {
+  position: absolute;
+  top: 96px;
+  left: 270px;
+  height: 30px;
+  width: 30px;
+}
+.labelLambda {
+  position: absolute;
+  top: 120px;
+  left: 249px;
+  height: 30px;
+  width: 30px;
+}
 tr {
   border: solid 1px #FFFFFF;
   color: #FFFFFF;
