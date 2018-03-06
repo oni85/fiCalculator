@@ -63,9 +63,27 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
   function dataValidation () {
     let validationArr = [];
     let isValid;
+    if (rY === '') {
+      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
+      document.getElementById('ryValidation').innerHTML = '<p class="centered">Fill this field</p>';
+      isValid = false;
+      validationArr.push(isValid);
+    } else {
+      isValid = true;
+      validationArr.push(isValid);
+    }
     if (isNaN(rY)) {
       document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
       document.getElementById('ryValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
+      isValid = false;
+      validationArr.push(isValid);
+    } else {
+      isValid = true;
+      validationArr.push(isValid);
+    }
+    if (lambdaC === '') {
+      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
+      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
       isValid = false;
       validationArr.push(isValid);
     } else {
@@ -99,15 +117,6 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
       isValid = true;
       validationArr.push(isValid);
     }
-    if (rY === '') {
-      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('ryValidation').innerHTML = '<p class="centered">Fill this field</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
     if (lambdaC < 10) {
       document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
       document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is less than 10</p>';
@@ -126,15 +135,7 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
       isValid = true;
       validationArr.push(isValid);
     }
-    if (lambdaC === '') {
-      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
+
     console.log(validationArr);
 
     function isTrue(arrValue) {
