@@ -28,6 +28,8 @@ function inputCleaner () {
   document.getElementById('fI').innerHTML = '';
 }
 
+// ----------INPUT CLEANER FUNCTION ----------------------- //
+
 // ----------CLICK ON CALCULATE BUTTON ----------------------- //
 
 document.getElementById('calcBtn').addEventListener('click', function calculate () {
