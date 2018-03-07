@@ -20,6 +20,7 @@ function tableCleaner () {
   document.getElementById('lambdaValidation').classList.remove('displayBlock');
   document.getElementById('ryValidation').classList.remove('displayBlock');
 }
+
 // ----------INPUT CLEANER FUNCTION ----------------------- //
 
 function inputCleaner () {
@@ -28,17 +29,105 @@ function inputCleaner () {
   document.getElementById('fI').innerHTML = '';
 }
 
+// ----------DATA VALIDATION FUNCTION ----------------------- //
+
+function dataValidation (p1, p2) {
+  let validationArr = [];
+  let isValid;
+  if (isNaN(p1)) {
+    document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('ryValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (isNaN(p2)) {
+    document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (p1 < 200) {
+    document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('ryValidation').innerHTML = '<p class="centered">Ry is less than 200 mPa</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (p1 > 640) {
+    document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('ryValidation').innerHTML = '<p class="centered">Ry is more than 640 mPa</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (p2 < 10) {
+    document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is less than 10</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (p2 > 220) {
+    document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is more than 220</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (document.getElementById('rY').value.length === 0) {
+    // console.log(document.getElementById('rY').value.length);
+    document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('ryValidation').innerHTML = '<p class="centered">Fill this field</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+  if (document.getElementById('lambda').value.length === 0) {
+    document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
+    document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
+    isValid = false;
+    validationArr.push(isValid);
+  } else {
+    isValid = true;
+    validationArr.push(isValid);
+  }
+
+  function isTrue(arrValue) {
+    return arrValue === true;
+  }
+  validPass = validationArr.every(isTrue);
+  return validPass;
+}
+
+// ----------INTERPOLATION FUNCTION ----------------------- //
+
+function interpolator(x, x1, x2, y1, y2) {
+  let intRes;
+  intRes = Math.round(y1 + (x - x1) * (y2 - y1) / (x2 - x1));
+  return intRes;
+}
+
 // ----------CLICK ON CALCULATE BUTTON ----------------------- //
 
 document.getElementById('calcBtn').addEventListener('click', function calculate () {
 
   tableCleaner();
-
-  function interpolator(x, x1, x2, y1, y2) {
-    let intRes;
-    intRes = Math.round(y1 + (x - x1) * (y2 - y1) / (x2 - x1));
-    return intRes;
-  }
 
   // crearing variables from input data
 
@@ -59,116 +148,30 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
   let fi2;
   let fi;
 
-  // ----------DATA VALIDATION FUNCTION ----------------------- //
-  function dataValidation () {
-    let validationArr = [];
-    let isValid;
-    if (rY === '') {
-      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('ryValidation').innerHTML = '<p class="centered">Fill this field</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (isNaN(rY)) {
-      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('ryValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (lambdaC === '') {
-      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Fill this field</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (isNaN(lambdaC)) {
-      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">Only numbers allowed</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (rY < 200) {
-      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('ryValidation').innerHTML = '<p class="centered">Ry is less than 200 mPa</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (rY > 640) {
-      document.getElementById('ryValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('ryValidation').innerHTML = '<p class="centered">Ry is more than 640 mPa</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (lambdaC < 10) {
-      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is less than 10</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-    if (lambdaC > 220) {
-      document.getElementById('lambdaValidation').classList.add('displayBlock', 'transitionDiv');
-      document.getElementById('lambdaValidation').innerHTML = '<p class="centered">&#955; is more than 220</p>';
-      isValid = false;
-      validationArr.push(isValid);
-    } else {
-      isValid = true;
-      validationArr.push(isValid);
-    }
-
-    console.log(validationArr);
-
-    function isTrue(arrValue) {
-      return arrValue === true;
-    }
-    console.log(validationArr.every(isTrue));
-    validPass = validationArr.every(isTrue);
-
-  }
-
   // filling table arrays
 
-  for (var i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
+  for (let i = 0; i < (document.getElementById('tableRy').children[0].children[0].children).length; i++) {
     ryArr[i] = document.getElementById('tableRy').children[0].children[0].children[i].textContent;
   }
 
-  for (i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
+  for (let i = 0; i < document.getElementById('tableLambda').children[0].children.length; i++) {
     lambdaArr[i] = document.getElementById('tableLambda').children[0].children[i].children[0].textContent;
   }
 
-  for (i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
+  for (let i = 0; i < document.getElementById('tableFi').children[0].children.length; i++) {
     let fiArrContent = [];
-    for (var y = 0; y < document.getElementById('tableFi').children[0].children[i].children.length; y++) {
+    for (let y = 0; y < document.getElementById('tableFi').children[0].children[i].children.length; y++) {
       fiArrContent[y] = document.getElementById('tableFi').children[0].children[i].children[y].textContent;
     }
     fiArr[i] = fiArrContent;
   }
 
-  dataValidation();
+  // data validation
+  validPass = dataValidation(rY, lambdaC);
 
   if (validPass === true) {
 
-    // ----------RYINDEX ARRAY FORMING----------------------- //
+    // ryindex array forming
     for (let i = 0; i < ryArr.length; i++) {
       if (rY === +ryArr[i]) {
         ryIndex.push(ryArr.indexOf(ryArr[i]));
@@ -188,9 +191,8 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
 
       }
     }
-    // console.log(i);
 
-    // ----------LAMBDAINDEX ARRAY FORMING----------------------- //
+    // lambda index array forming
     for (let i = 0; i < lambdaArr.length; i++) {
       if (lambdaC === +lambdaArr[i]) {
         lambdaIndex.push(lambdaArr.indexOf(lambdaArr[i]));
@@ -213,11 +215,11 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
 
       }
     }
-    // ----------FIINDEX ARRAY FORMING----------------------- //
+    // fi index array forming
 
     fiIndex.push(ryIndex, lambdaIndex);
 
-    // ----------FITABLE CELLS HIGHLIGHTING----------------------- //
+    // fitable cells highlighting
     if (fiIndex[0].length === 2 && fiIndex[1].length === 2) {
       // cells highlighting
       document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
@@ -226,26 +228,26 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
       document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].classList.add('tdActive');
       // fi calculate
       let y1 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].textContent);
-      console.log('x1 = ' + x1);
+      // console.log('x1 = ' + x1);
       let y2 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].textContent);
-      console.log('x2 = ' + x2);
+      // console.log('x2 = ' + x2);
       let y3 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].textContent);
-      console.log('x3 = ' + x3);
+      // console.log('x3 = ' + x3);
       let y4 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][1]].textContent);
-      console.log('x4 = ' + x4);
-      console.log('y1 = ' + y1);
-      console.log('y2 = ' + y2);
-      console.log('y3 = ' + y3);
-      console.log('y4 = ' + y4);
+      // console.log('x4 = ' + x4);
+      // console.log('y1 = ' + y1);
+      // console.log('y2 = ' + y2);
+      // console.log('y3 = ' + y3);
+      // console.log('y4 = ' + y4);
       fi1 = interpolator(rY, x1, x2, y1, y2);
-      console.log(fi1);
-      console.log(typeof fi1);
+      // console.log(fi1);
+      // console.log(typeof fi1);
       fi2 = interpolator(rY, x1, x2, y3, y4);
-      console.log(fi2);
-      console.log(typeof fi2);
+      // console.log(fi2);
+      // console.log(typeof fi2);
       fi = interpolator(lambdaC, x3, x4, fi1, fi2);
-      console.log(fi);
-      console.log(typeof fi);
+      // console.log(fi);
+      // console.log(typeof fi);
       document.getElementById('fI').textContent = (fi / 1000);
     } else if (fiIndex[0].length === 2 && fiIndex[1].length === 1) {
       // table marks add
@@ -253,25 +255,25 @@ document.getElementById('calcBtn').addEventListener('click', function calculate 
       document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].classList.add('tdActive');
       // fi calculate
       let y1 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].textContent);
-      console.log('y1 = ' + x1);
+      // console.log('y1 = ' + x1);
       let y2 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][1]].textContent);
-      console.log('y2 = ' + x2);
+      // console.log('y2 = ' + x2);
       fi = interpolator(rY, x1, x2, y1, y2);
-      console.log(fi);
-      console.log(typeof fi);
+      // console.log(fi);
+      // console.log(typeof fi);
       document.getElementById('fI').textContent = (fi / 1000);
     } else if (fiIndex[0].length === 1 && fiIndex[1].length === 2) {
       // table marks add
       document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
       document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].classList.add('tdActive');
       let y1 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].textContent);
-      console.log('y1 = ' + y1);
+      // console.log('y1 = ' + y1);
       let y3 = parseInt(document.getElementById('tableFi').children[0].children[fiIndex[1][1]].children[fiIndex[0][0]].textContent);
-      console.log('y3 = ' + y3);
+      // console.log('y3 = ' + y3);
       // fi calculate
       fi = interpolator(lambdaC, x3, x4, y1, y3);
-      console.log(fi);
-      console.log(typeof fi);
+      // console.log(fi);
+      // console.log(typeof fi);
       document.getElementById('fI').textContent = (fi / 1000);
     } else {
       document.getElementById('tableFi').children[0].children[fiIndex[1][0]].children[fiIndex[0][0]].classList.add('tdActive');
