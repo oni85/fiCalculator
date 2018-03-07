@@ -6,27 +6,27 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 body {
-  background-color: #FF9800;
+  background-color: #8c7ae6;
 }
 table {
   border-spacing: 0px;
-  border: solid 1px #FFFFFF;
+  border: solid 1px #ffffff;
   margin-left: auto;
   margin-right: auto;
 }
 td {
   height: 35px;
   width: 35px;
-  border: solid 1px #FFFFFF;
+  border: solid 1px #ffffff;
   text-align: center;
   font-size: 60%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .tdActive {
-  background-color: rgba(244,67,54,0.8);
+  background-color: rgba(232, 65, 24, 0.8);
   transition: background 1s;
 }
 .labelRy {
@@ -76,11 +76,11 @@ p {
   margin-bottom: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border: solid 1px #FFFFFF;
+  border: solid 1px #ffffff;
   border-left: none;
   border-right: none;
   border-top: none;
-  background-color: #FF9800;
+  background-color: #8c7ae6;
   outline: none;
   font-size: 200%;
   font-weight: 100;
@@ -91,7 +91,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  background-color: #FF9800;
+  background-color: #8c7ae6;
 }
 .header {
   width: 1000px;
@@ -141,7 +141,7 @@ p {
   border-left: none;
   border-right: none;
   border-top: none;
-  background-color: #FF9800;
+  background-color: #8c7ae6;
   outline: none;
   font-size: 200%;
   font-weight: 100;
@@ -151,7 +151,7 @@ p {
   height: 100px;
   width: 150px;
   margin-top: 170px;
-  background-color: #7C4DFF;
+  background-color: #273c75;
   border-radius: 5%;
   transition: 0.2s;
   outline: 0;
@@ -162,7 +162,7 @@ p {
   height: 100px;
   width: 150px;
   margin-top: 30px;
-  background-color: #7C4DFF;
+  background-color: #273c75;
   border-radius: 5%;
   transition: 0.2s;
   outline: 0;
@@ -201,9 +201,11 @@ p {
 /*--------------PLACEHOLDERS--------------*/
 #rY::-webkit-input-placeholder {
 font-size: 50%;
+color: #273c75;
 }
 #lambda::-webkit-input-placeholder {
 font-size: 50%;
+color: #273c75;
 }
 /*--------------VALIDATION--------------*/
 .validMessage {
