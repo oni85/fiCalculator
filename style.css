@@ -44,7 +44,7 @@ td {
   width: 30px;
 }
 tr {
-  border: solid 1px #FFFFFF;
+  border: solid 1px #ffffff;
   color: #FFFFFF;
 }
 h1 {
@@ -168,7 +168,7 @@ p {
   outline: 0;
   border: none;
 }
-.shadow {.validMessage {
+.validMessage {
   width: 150px;
   height: 50px;
   position: absolute;
@@ -178,6 +178,7 @@ p {
   display: block;
   text-align: center;
 }
+.shadow {
   box-shadow: 0 3px 10px rgba(0,0,0,.2), 0 3px 10px rgba(0,0,0,.2);
 }
 .calculateButton:hover {

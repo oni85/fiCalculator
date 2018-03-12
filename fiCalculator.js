@@ -122,6 +122,14 @@ function interpolator(x, x1, x2, y1, y2) {
   return intRes;
 }
 
+// ----------SUBMIT BY ENTER ----------------------- //
+
+document.addEventListener('keypress', function (pressedKey) {
+    if (pressedKey.which == 13) {
+            document.getElementById("calcBtn").click();
+    }
+});
+
 // ----------CLICK ON CALCULATE BUTTON ----------------------- //
 
 document.getElementById('calcBtn').addEventListener('click', function calculate () {
